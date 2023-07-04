@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+ @import "~bootstrap/dist/css/bootstrap.css";
+ @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
+
+:root {
+
+    --primer-color: #026467;
+    --secondary-color: #E5F5EA;
+    --body-text-color: #596392;
+ --navbar-footer-color: #f9f9f9;
+}
+
+body{
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    color: var(--body-text-color);
+ }
+
+
+
+
+
+
+
+
+
+
+
+
