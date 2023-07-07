@@ -16,6 +16,7 @@ import { SubscriptionFormsComponent } from './subscription-forms/subscription-fo
 import { TermsAndConditionComponent } from './pages/terms-and-condition/terms-and-condition.component';
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { AuthModule } from './auth/auth.module';
+import { PostCardComponent } from './layouts/post-card/post-card.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AuthModule } from './auth/auth.module';
       SubscriptionFormsComponent,
     TermsAndConditionComponent,
      CommentFormComponent,
-    CommentListComponent
+    CommentListComponent,
+    PostCardComponent
   ],
   imports: [
     BrowserModule,

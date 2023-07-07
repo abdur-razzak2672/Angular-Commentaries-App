@@ -9,12 +9,32 @@
  --navbar-footer-color: #f9f9f9;
 }
 
+a{
+    color: var(--primer-color);
+    text-decoration: none;
+}
+
 body{
     font-family: "Roboto", sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     color: var(--body-text-color);
  }
 
+ .site-logo{
+    padding: 5px 20px;
+    border-radius: 20px;
+    background-color: var(--secondary-color);
+    font-size: 1.5rem;
+ }
+ .nav-link{
+    /* text-transform: uppercase; */
+    color:  var(--primer-color);
+}
+
+.shadow-effect{
+    border: none;
+    box-shadow: 0px 0px 10px 0px rgba(71,114,254,0.3);
+}   
 
 
 
