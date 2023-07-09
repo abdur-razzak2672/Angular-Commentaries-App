@@ -24,7 +24,7 @@ body{
     padding: 5px 20px;
     border-radius: 20px;
     background-color: var(--secondary-color);
-    font-size: 1.5rem;
+    font-size: 1rem;
  }
  .nav-link{
     /* text-transform: uppercase; */
@@ -34,7 +34,27 @@ body{
 .shadow-effect{
     border: none;
     box-shadow: 0px 0px 10px 0px rgba(71,114,254,0.3);
-}   
+}  
+
+.app-theme{
+    background-color: var(--primer-color);
+}
+.app-secondary-theme{
+    background-color: var(--secondary-color);
+}
+
+.app-text-theme{
+    color: var(--primer-color);
+}
+
+.btn-subs{
+    height:50px;
+     border: none;
+    background-color: var(--primer-color);
+    font-size: 13px;
+    color: #fff;
+    width: 140px;
+}
 
 
 
