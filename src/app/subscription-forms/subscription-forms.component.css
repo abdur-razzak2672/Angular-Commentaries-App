@@ -1,6 +1,6 @@
 .card{
     background-color: var(--secondary-color);
-    width: 1000px;
+    width: 1120px;
 }
 
 input[type="text"], input[type="email"], textarea{
@@ -10,14 +10,7 @@ input[type="text"], input[type="email"], textarea{
      width: 100%;
 }
 
-.btn-subs{
-    height:50px;
-     border: none;
-    background-color: var(--primer-color);
-    font-size: 13px;
-    color: #fff;
-    width: 100%;
-}
+ 
 
 .subs-text{
     width: 500px;

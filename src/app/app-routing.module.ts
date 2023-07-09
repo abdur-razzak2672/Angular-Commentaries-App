@@ -12,16 +12,19 @@ import { LoginComponent } from './auth/login/login.component';
 import { AuthComponent } from './auth/auth.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { UpdateProfileComponent } from './auth/update-profile/update-profile.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contact-us', component: ContactUsComponent },
-  { path: 'category/:id', component: SingleCategoryComponent },
-  { path: 'post/:id', component: SinglePostComponent },
+  { path: 'category', component: SingleCategoryComponent },
+  { path: 'post', component: SinglePostComponent },
   { path: 'terms-and-condition', component: TermsAndConditionComponent },
   { path: 'comment-form', component: CommentFormComponent },
   { path: 'comment-list', component: CommentListComponent },
   { path: 'subscription-forms', component: SubscriptionFormsComponent },
+  { path: 'about-us', component: AboutUsComponent },
+
 
   {
     path: 'auth', component:AuthComponent, children: [
