@@ -1,5 +1,53 @@
 header{
     height: 50px;
-}
+ }
 
  
+/* Basic styles for the custom dropdown */
+.custom-dropdown {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .selected-value {
+    padding: 5px;
+   }
+  
+  .dropdown-options {
+    position: absolute;
+    top: 100%;
+    width: 160px;
+    text-align: center;
+    
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+   }
+  
+  .dropdown-options li {
+    padding: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .dropdown-options li a {
+    font-size: 14px;
+ 
+    text-decoration: none;
+  }
+  .dropdown-options li:hover {
+ 
+    background-color: var(--secondary-color);
+    color: var(--primer-color);
+  }
+  
+  
+  /* Show the dropdown options on hover */
+  .custom-dropdown:hover .dropdown-options {
+    display: block;
+  }
+ 
+  

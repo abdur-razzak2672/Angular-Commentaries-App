@@ -1,5 +1,5 @@
  <section class="featured-section">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md-12 text-light text-center mt-5">
                 <h2>Featured Posts</h2>
@@ -7,30 +7,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 mt-4">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-md-3 mt-4">
-                <app-post-card></app-post-card>
-            </div>
-             
-            <div class="col-md-3 mt-4">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-md-3 mt-4">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-md-3 mt-4">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-md-3 mt-4">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-md-3 mt-4">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-md-3 mt-4">
-                <app-post-card></app-post-card>
+            <div class="col-md-4 col-lg-3 col-sm-6 mt-4  " *ngFor="let post of posts.slice(0, 4)">
+                <app-post-card [post]="post"></app-post-card>
             </div>
         </div>
     </div>
@@ -46,30 +24,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 mt-4">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-md-4 mt-4">
-                <app-post-card></app-post-card>
-            </div>
-             
-            <div class="col-md-4 mt-4">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-md-4 mt-4">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-md-4 mt-4">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-md-4 mt-4">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-md-4 mt-4">
-                <app-post-card></app-post-card>
-            </div>
-            <div class="col-md-4 mt-4">
-                <app-post-card></app-post-card>
+            <div class="col-md-4 col-lg-4 col-sm-6  mt-4" *ngFor="let post of posts.slice(4, 81111)">
+                <app-post-card [post]="post"></app-post-card>
             </div>
         </div>
     </div>

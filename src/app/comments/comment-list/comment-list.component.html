@@ -1,52 +1,55 @@
 <div class="mt-5 card mb-5 pb-3 shadow-effect">
     <div class="card-body">
-        <h4 class="mt-3 mb-3">
-            Comments (1604)
-        </h4>
+      <h4 class="mt-3 mb-3">
+        Comments ({{feedback.length}})
+      </h4>
+  
+      <div *ngFor="let comment of feedback">
         <div class="comment-box mt-3">
-            <h6 class="mb-0">Abdur Razzzk</h6>
-            <small class="text-danger">Last Updated - Sep 20, 2023</small>
-            <div class="mt-2 mb-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quibusdam iste sed maiores tenetur autem distinctio beatae atque deleniti dolores, dolore incidunt libero, suscipit ex et, sint corporis nihil officiis!
+  
+          <div class="d-flex">
+            <img [src]="comment.photoUrl" class="profile-image  rounded-circle">
+            <h6 class="mb-0 mt-3">{{comment.name}}</h6>
+          </div>
+           
+            <div  class="rating  ">
+                <span *ngFor="let star of stars; let i = index" [class.star-filled]="i <comment?.ratitng">&#9733;</span>
             </div>
-            <a href="#" class="mt-1">Reply</a>
-            <a href="#" class="mt-1 mx-3">View Reply</a>
-            <hr>
+          
+          <div class="mt-2 mb-3">
+            <p>{{comment.comment}}</p>
+          </div>
+          
+          <div *ngIf="comment.reply && comment.reply.length > 0">
+            <a   (click)="toggleReplies(comment)" class="mt-1 cursorBtn"> {{showReply(comment)}}</a>
+            <a (click)="toggleReplies(comment)" class="mt-1 mx-3 cursorBtn ">{{showReplyText(comment)}}</a>
+          </div>
+          <hr>
+  
+          <div class="comment-replies" *ngIf="showComment && comment.showReplies">
+            <form class="mx-3">
+              <div *ngFor="let reply of comment?.reply">
+                <div class="d-flex">
+                  <img [src]="reply.photoUrl" class="profile-image  rounded-circle">
+                  <h6 class="mb-0 mt-3">{{reply.name}}</h6>
+                </div>
+                <small class="text-danger">Last Updated - Sep 20, 2023</small>
+                <div class="mt-2 mb-3">
+                  <p>{{reply.comment}}</p>
+                </div>
+               </div>
+              <div class="form-group my-2">
+                <input class="form-control" placeholder="replying" id="comment" name="comment" rows="3" />
+              </div>
+              <div class="d-flex justify-content-end">
+                <button type="submit" class="btn d-flex mt-2 btn-reply">Reply</button>
+              </div>
+            </form>
+          </div>
+  
         </div>
-
-        <div class="comment-box mt-3">
-            <h6 class="mb-0">Abdur Razzzk</h6>
-            <small class="text-danger">Last Updated - Sep 20, 2023</small>
-            <div class="mt-2 mb-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quibusdam iste sed maiores tenetur autem distinctio beatae atque deleniti dolores, dolore incidunt libero, suscipit ex et, sint corporis nihil officiis!
-            </div>
-            <a href="#" class="mt-1">Reply</a>
-            <a href="#" class="mt-1 mx-3">View Reply</a>
-            <hr>
-        </div>
-
-        <div class="comment-box mt-3">
-            <h6 class="mb-0">Abdur Razzzk</h6>
-            <small class="text-danger">Last Updated - Sep 20, 2023</small>
-            <div class="mt-2 mb-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quibusdam iste sed maiores tenetur autem distinctio beatae atque deleniti dolores, dolore incidunt libero, suscipit ex et, sint corporis nihil officiis!
-            </div>
-            <a href="#" class="mt-1">Reply</a>
-            <a href="#" class="mt-1 mx-3">View Reply</a>
-            <hr>
-        </div>
-
-        <div class="comment-box mt-3">
-            <h6 class="mb-0">Abdur Razzzk</h6>
-            <small class="text-danger">Last Updated - Sep 20, 2023</small>
-            <div class="mt-2 mb-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quibusdam iste sed maiores tenetur autem distinctio beatae atque deleniti dolores, dolore incidunt libero, suscipit ex et, sint corporis nihil officiis!
-            </div>
-            <a href="#" class="mt-1">Reply</a>
-            <a href="#" class="mt-1 mx-3">View Reply</a>
-            <hr>
-        </div>
-
-
+      </div>
+  
     </div>
-</div>
+  </div>
+  
