@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { DatePipe } from '@angular/common'; // Import the DatePipe
 
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
@@ -18,6 +21,17 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { PostCardComponent } from './layouts/post-card/post-card.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider,
+ } from '@abacritt/angularx-social-login';
+
+ import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+ import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
+ import { ToastrModule } from 'ngx-toastr'; // Import the module
+ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+ 
 
 @NgModule({
   declarations: [
@@ -40,9 +54,38 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
     BrowserModule,
     AppRoutingModule,
     AuthRoutingModule,
+    AuthModule,
+    NgxSpinnerModule,
+    HttpClientModule,
+    SocialLoginModule,
+    GoogleSigninButtonModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
+
+     
 
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '88020331125-l622gkvq002tnlcj729tbq4j7iodo81g.apps.googleusercontent.com'
+            )
+          },
+           
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    },DatePipe
+  ],  bootstrap: [AppComponent]
+
 })
 export class AppModule { }

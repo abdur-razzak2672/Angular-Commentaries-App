@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'category', component: SingleCategoryComponent },
-  { path: 'post', component: SinglePostComponent },
+  { path: 'post/details/:id', component: SinglePostComponent },
   { path: 'terms-and-condition', component: TermsAndConditionComponent },
   { path: 'comment-form', component: CommentFormComponent },
   { path: 'comment-list', component: CommentListComponent },

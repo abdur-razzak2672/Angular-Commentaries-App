@@ -2,16 +2,34 @@
     <div class="card-body">
         <h4>Leave a Comment</h4>
         <p> You can leave a comment using this comment form </p>
-        <form>
+        <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+            <div *ngIf="user" class="form-group d-flex my-2">
+                <img [src]="user.photoUrl" alt="Profile Image" class="profile-image rounded-circle">
+                <h5 class="app-text-theme mt-2">{{user.name}}</h5>
+             </div>
+             <p *ngIf="!user" class="text-danger">You need to login to leave a comment</p>
             <div class="form-group my-2">
-                <label for="name">Name</label>
-                <input type="text" placeholder="Enter your name" class="form-control" id="name" name="name">
-            </div>
-            <div class="form-group my-2">
-                <label class="mt-2"  for="comment">Comment</label>
-                <textarea class="form-control" placeholder="Enter your comment" id="comment" name="comment" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn  mt-2 btn-subs">Add a Comment</button>
+                <label for="email">Enter Your Ratting</label>
+                
+                <div  class="rating  ">
+                    <span *ngFor="let star of stars"   (click)="rate(star)" [class.star-filled]="star.filled">&#9733;</span>
+                </div>
+                </div>  
+
+           
+                <div class="form-group">
+                    <label for="title">Comment</label>
+                    <textarea cols="30" rows="10"
+                        [ngClass]="{'is-invalid': fc['comment'].invalid && fc['comment'].touched }"
+                        formControlName="comment" class="form-control" placeholder="Enter your comment"></textarea>
+                    <div *ngIf="fc['comment'].errors?.['required']">
+                        <div class="text-danger " *ngIf="fc['comment'].touched && fc['comment'].invalid">
+                            Field is required
+                        </div>
+                    </div>
+                     
+                </div>
+            <button [disabled]="!user" type="submit" class="btn  mt-2  btn-subs">Add a Comment</button>
         </form>
     </div>
 </div>

@@ -1,12 +1,20 @@
 .featured-section{
-    padding-left: 130px;
-    padding-right: 130px;
+    /* padding-left: 130px;
+    padding-right: 130px; */
     padding-bottom: 130px;
     background-color: var(--primer-color);
 }
 
 .latest-section{
-    padding-left: 130px;
-    padding-right: 130px;
+    /* padding-left: 130px;
+    padding-right: 130px; */
     padding-bottom: 80px;
  }
+
+ @media screen and (max-width: 568px) {
+     .cardTot{
+            margin-left: 70px;
+     }
+ }
+    
+  

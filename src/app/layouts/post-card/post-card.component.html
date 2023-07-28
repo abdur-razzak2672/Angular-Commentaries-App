@@ -1,14 +1,14 @@
-  <a href="post">
+  <a href="post/details/{{post?.id}}">
    <div class="card shadow-effect">
-      <img src="https://images.pexels.com/photos/262508/pexels-photo-262508.jpeg?cs=srgb&dl=pexels-pixabay-262508.jpg&fm=jpg" class="card-img-top" alt="...">
+      <img [src]="post?.imageUrl " class="card-img-top" alt="...">
    <div class="card-body">
       <small class="bg-light text-danger text-center">Design</small>
       <small class="bg-light text-success text-center mx-2">Feature</small>
   
       <small class="bg-light text-info text-center mx-2">Views : 1056</small>
-      <h5 class="mt-1">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <small class="bg-light text-muted text-center  ">Last updated 3 mins ago</small>
+      <h5 class="mt-1 title"> {{post?.title}}</h5>
+      <p class="card-text description">{{post?.excerpt}}</p>
+      <small class="bg-light text-muted text-center update  ">Last updated {{ createdAtFormatted }} ago</small>
   
    </div>
   

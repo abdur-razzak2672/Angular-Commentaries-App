@@ -1,5 +1,6 @@
  @import "~bootstrap/dist/css/bootstrap.css";
  @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
+ @import "~ngx-toastr/toastr";
 
 :root {
 
@@ -56,9 +57,39 @@ body{
     width: 140px;
 }
 
+.btn-reply{
+      border: none;
+    background-color: var(--primer-color);
+    font-size: 13px;
+    color: #fff;
+    
+ }
+
+.profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
 
 
+.cursorBtn{
+    cursor: pointer;
+}
 
+.rating {
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.star-filled {
+    color: #f1c40f;
+    cursor: pointer;
+}
+.dateText{
+    font-size: 12px;
+ }
 
 
 

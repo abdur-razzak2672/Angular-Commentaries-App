@@ -1,3 +1,47 @@
 .card{
     max-width: 400px;
 }
+
+.card-img-top{
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    /* Set the height to accommodate three lines of text */
+     overflow: hidden;
+  }
+  
+  .title {
+    /* Set the number of lines to be displayed and add ellipsis for overflow */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Number of lines to display */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 50px;
+  }
+
+  .description {
+    /* Set the number of lines to be displayed and add ellipsis for overflow */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Number of lines to display */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 70px;
+  }
+
+  .update{
+    /* Set the number of lines to be displayed and add ellipsis for overflow */
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Number of lines to display */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+ 
+  
+  
+  
+  
