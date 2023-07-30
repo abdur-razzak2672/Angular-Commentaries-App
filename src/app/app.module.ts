@@ -30,8 +30,7 @@ import {
  import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
  import { ToastrModule } from 'ngx-toastr'; // Import the module
  import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
- 
+  
 
 @NgModule({
   declarations: [
