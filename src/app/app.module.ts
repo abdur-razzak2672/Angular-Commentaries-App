@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { DatePipe } from '@angular/common'; // Import the DatePipe
-import { provideClientHydration } from '@angular/platform-browser';
+
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,7 +30,8 @@ import {
  import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
  import { ToastrModule } from 'ngx-toastr'; // Import the module
  import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- 
+ import { provideClientHydration } from '@angular/platform-browser'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,7 @@ import {
     AboutUsComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule,
     AppRoutingModule,
     AuthRoutingModule,
     AuthModule,
@@ -83,7 +84,8 @@ import {
         }
       } as SocialAuthServiceConfig,
     },DatePipe,
-   ],  bootstrap: [AppComponent]
+    provideClientHydration()
+  ],  bootstrap: [AppComponent]
 
 })
 export class AppModule { }
