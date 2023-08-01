@@ -1,41 +1,46 @@
-<header class="navbar shadow-effect navbar-expand fixed-top bg-white">
+<header class="navbar shadow-effect navbar-expand-md fixed-top bg-white">
     <div class="container justify-content-between">
-        <!-- Logo on the left side -->
-        <a href="#" class="site-logo">My Commentaries Admin</a>
-        <nav class="navbar     " >
-            <div class="container">
-               <div class="collapse navbar-collapse justify-content-center">
-                   <ul class="navbar-nav">
-                       <li class="nav-item mx-2" ><a class="nav-link" href="#">Home</a></li>
-                       <li class="nav-item mx-2" ><a  class="nav-link"href="category">Category</a></li>
-                       <li class="nav-item mx-2"  ><a  class="nav-link"href="about-us">About</a></li>
-                         <li class="nav-item mx-2" ><a  class="nav-link"href="contact-us">Contact</a></li>
-       
-                        <!-- <li class="nav-item mx-2" ><a  class="nav-link"href="auth/login">Login</a></li>
-                       <li class="nav-item mx-2 " ><a  class="nav-link"href="auth/signup">Register</a></li> -->
-               
-                   </ul>
-       
-               </div>
-            </div>
-        </nav>
+      <!-- Logo on the left side -->
+      <a href="#" class="site-logo">My Commentaries App</a>
+  
+      <!-- Hamburger menu button for mobile -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <nav class="navbar-collapse collapse" id="navbarCollapse">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item mx-2"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item mx-2"><a class="nav-link" href="category">Category</a></li>
+          <li class="nav-item mx-2"><a class="nav-link" href="about-us">About</a></li>
+          <li class="nav-item mx-2"><a class="nav-link" href="contact-us">Contact</a></li>
+   <!--        <button (click)="increment()">Increment</button>
 
-        <!-- Profile dropdown on the right side -->
-        <div *ngIf="user" class="custom-dropdown d-flex">
-            <img [src]="user.photoUrl" alt="Profile Image" class="profile-image rounded-circle">
-            <div class=" ">
-                <div class="selected-value">
-                    {{user.name}}
-                </div>
-                <ul class="dropdown-options rounded ">
-                    <li><a href="#">Your Profile</a></li>
-                    <li (click)="signOut()"><a   >Sign Out</a></li>
-                </ul>
-            </div>
-        </div>
-        <div *ngIf="!user">
-            <asl-google-signin-button type="icon" size="large"></asl-google-signin-button>
+<div>Current Count: {{ count$ | async }}</div>
 
+<button (click)="decrement()">Decrement</button>
+
+<button (click)="reset()">Reset Counter</button> -->
+        </ul>
+      </nav>
+  
+      <!-- Profile dropdown on the right side -->
+      <div *ngIf="user" class="custom-dropdown d-md-flex d-none">
+        <img [src]="user.photoUrl" alt="Profile Image" class="profile-image rounded-circle">
+        <div class="ml-2">
+          <div class="selected-value">
+            {{user.name}}
+          </div>
+          <ul class="dropdown-options rounded">
+            <li><a href="#">Your Profile</a></li>
+            <li (click)="signOut()"><a>Sign Out</a></li>
+          </ul>
         </div>
+      </div>
+      <div *ngIf="!user">
+        <asl-google-signin-button type="icon" size="large"></asl-google-signin-button>
+      </div>
     </div>
-</header>
+  </header>
+  
