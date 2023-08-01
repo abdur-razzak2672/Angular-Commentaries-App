@@ -2,6 +2,9 @@ import { Component ,OnInit } from '@angular/core';
  import { Router } from '@angular/router';
  import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { increment, decrement, reset } from '../../service/store/user.actions';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +12,31 @@ import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  
+  count$: Observable<number>
+
   showDropdown: boolean = false;
   authState: any = localStorage.getItem('user');
   user: any = JSON.parse(this.authState);
   constructor(private router: Router,
-    private authService: SocialAuthService
+    private authService: SocialAuthService,
+    private store: Store<{ count: number }>
 
-    ) { }
+    ) {
+      this.count$ = store.select('count');
+
+     }
+
+     increment() {
+      this.store.dispatch(increment());
+    }
+   
+    decrement() {
+      this.store.dispatch(decrement());
+    }
+   
+    reset() {
+      this.store.dispatch(reset());
+    }
 
   ngOnInit(): void {
     console.log(this.user);

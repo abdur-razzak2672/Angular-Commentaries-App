@@ -15,6 +15,13 @@
           <li class="nav-item mx-2"><a class="nav-link" href="category">Category</a></li>
           <li class="nav-item mx-2"><a class="nav-link" href="about-us">About</a></li>
           <li class="nav-item mx-2"><a class="nav-link" href="contact-us">Contact</a></li>
+   <!--        <button (click)="increment()">Increment</button>
+
+<div>Current Count: {{ count$ | async }}</div>
+
+<button (click)="decrement()">Decrement</button>
+
+<button (click)="reset()">Reset Counter</button> -->
         </ul>
       </nav>
   
@@ -27,11 +34,11 @@
           </div>
           <ul class="dropdown-options rounded">
             <li><a href="#">Your Profile</a></li>
-            <li (click)="signOut"><a>Sign Out</a></li>
+            <li (click)="signOut()"><a>Sign Out</a></li>
           </ul>
         </div>
       </div>
-      <div *ngIf="!user" class="d-md-none">
+      <div *ngIf="!user">
         <asl-google-signin-button type="icon" size="large"></asl-google-signin-button>
       </div>
     </div>

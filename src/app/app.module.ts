@@ -32,6 +32,11 @@ import {
  import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  import { provideClientHydration } from '@angular/platform-browser'; 
 
+ import { StoreModule } from '@ngrx/store';
+ import { counterReducer } from './service/store/user.reducer';
+ 
+import { getDevtoolsModule } from './service/enviroments/devtools';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,11 +65,10 @@ import {
     GoogleSigninButtonModule,
     ReactiveFormsModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
-
-     
-
-  ],
+    ToastrModule.forRoot(),// ToastrModule added
+     StoreModule.forRoot({ count: counterReducer }),
+     getDevtoolsModule(),
+   ],
   providers: [
     {
       provide: 'SocialAuthServiceConfig',
