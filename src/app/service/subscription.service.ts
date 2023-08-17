@@ -9,7 +9,7 @@ export class SubscriptionService {
     private http:HttpClient
   ) { }
 
-  url = 'http://localhost:3000/subscribed';
+  url = ' https://my-commentaries-app.onrender.com/subscribed';
 
   
 

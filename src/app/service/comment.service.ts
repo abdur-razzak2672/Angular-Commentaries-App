@@ -11,8 +11,9 @@ export class CommentService {
     private http:HttpClient
   ) { }
 
-  url = 'http://localhost:3000/feedback';
-  replyUrl = 'http://localhost:3000/reply';
+  url = ' https://my-commentaries-app.onrender.com/feedback';
+  replyUrl = ' https://my-commentaries-app.onrender.com/reply';
+  
 
   getCommentist():Observable<any[]>{
  

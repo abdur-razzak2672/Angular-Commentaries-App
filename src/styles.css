@@ -11,10 +11,9 @@
 }
 
 a{
-    color: var(--primer-color);
     text-decoration: none;
-}
-
+    color: var(--primer-color);
+  }
 body{
     font-family: "Roboto", sans-serif;
     font-size: 16px;
