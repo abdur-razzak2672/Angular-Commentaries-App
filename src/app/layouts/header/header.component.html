@@ -5,11 +5,24 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
+    <div *ngIf="user"  class="custom-dropdown d-flex ">
+      <img [src]="user.photoUrl" alt="Profile Image" class="profile-image rounded-circle">
+      <div class="mx-2">
+        <div class="selected-value text-dark">
+          {{user.name}}
+        </div>
+       
+      </div>
+    </div>
        <ul class="navbar-nav mx-auto">
         <li class="nav-item mx-2"><a class="nav-link" href="#">Home</a></li>
         <li class="nav-item mx-2"><a class="nav-link" href="category">Category</a></li>
         <li class="nav-item mx-2"><a class="nav-link" href="about-us">About</a></li>
         <li class="nav-item mx-2"><a class="nav-link" href="contact-us">Contact</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="/">Your Profile</a></li>
+        <li (click)="signOut()" class="nav-item mx-2 cursor-pointer"><a class="nav-link" >Sign Out</a></li>
+        
+
 
       </ul>
       </div>
@@ -26,6 +39,7 @@
  
   
       <nav class="navbar-collapse collapse" id="navbarCollapse">
+        
         <ul class="navbar-nav mx-auto">
           <li class="nav-item mx-2"><a class="nav-link" href="#">Home</a></li>
           <li class="nav-item mx-2"><a class="nav-link" href="category">Category</a></li>
@@ -36,7 +50,7 @@
       </nav>
   
       <!-- Profile dropdown on the right side -->
-      <div *ngIf="user" class="custom-dropdown d-md-flex d-none">
+      <div *ngIf="user" class="custom-dropdown d-lg-flex d-md-flex d-none">
         <img [src]="user.photoUrl" alt="Profile Image" class="profile-image rounded-circle">
         <div class="ml-2">
           <div class="selected-value">
