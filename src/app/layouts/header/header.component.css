@@ -49,6 +49,9 @@ header{
   .custom-dropdown:hover .dropdown-options {
     display: block;
   }
+  .cursor-pointer{
+    cursor: pointer;
+  }
 
  
  
