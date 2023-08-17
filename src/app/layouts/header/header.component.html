@@ -1,13 +1,29 @@
+ 
+<div class="offcanvas w-75 offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <a href="/" class="site-logo">My Commentaries App</a>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+       <ul class="navbar-nav mx-auto">
+        <li class="nav-item mx-2"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="category">Category</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="about-us">About</a></li>
+        <li class="nav-item mx-2"><a class="nav-link" href="contact-us">Contact</a></li>
+
+      </ul>
+      </div>
+</div>
 <header class="navbar shadow-effect navbar-expand-md fixed-top bg-white">
     <div class="container justify-content-between">
       <!-- Logo on the left side -->
-      <a href="#" class="site-logo">My Commentaries App</a>
+      <a href="/" class="site-logo">My Commentaries App</a>
+ 
+      
   
       <!-- Hamburger menu button for mobile -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      
+ 
   
       <nav class="navbar-collapse collapse" id="navbarCollapse">
         <ul class="navbar-nav mx-auto">
@@ -35,6 +51,12 @@
       <div *ngIf="!user">
         <asl-google-signin-button type="icon" size="large"></asl-google-signin-button>
       </div>
+      <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
+
+    
   </header>
   

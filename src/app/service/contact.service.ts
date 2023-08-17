@@ -10,7 +10,7 @@ export class ContactService {
     private http:HttpClient
   ) { }
 
-  url = 'http://localhost:3000/contact';
+  url = ' https://my-commentaries-app.onrender.com/contact';
 
   
 

@@ -1,6 +1,7 @@
 <div class="card mt-5 shadow-effect">
     <div class="card-body">
         <h4>Leave a Comment</h4>
+        
         <p> You can leave a comment using this comment form </p>
         <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
             <div *ngIf="user" class="form-group d-flex my-2">
