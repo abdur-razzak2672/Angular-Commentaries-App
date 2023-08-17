@@ -2,9 +2,11 @@ import { Component ,OnInit } from '@angular/core';
  import { Router } from '@angular/router';
  import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
-import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { increment, decrement, reset } from '../../service/store/user.actions';
+import { Store, select } from '@ngrx/store';
+  import { Observable } from 'rxjs';
+ import { AppState } from 'src/app/service/store/app.state';
+import { googleLogin } from '../../service/store/user.actions';
+import { googleLogout } from '../../service/store/user.actions';
 
 @Component({
   selector: 'app-header',
@@ -12,39 +14,35 @@ import { increment, decrement, reset } from '../../service/store/user.actions';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  count$: Observable<number>
-
+ 
   showDropdown: boolean = false;
-  authState: any = localStorage.getItem('user');
-  user: any = JSON.parse(this.authState);
+   user: any  
   constructor(private router: Router,
     private authService: SocialAuthService,
-    private store: Store<{ count: number }>
+     private userStore: Store<{ user: { user: any } }>
+
 
     ) {
-      this.count$ = store.select('count');
+       this.userStore.select('user').subscribe((data:any)=>{
+        this.user = data.user;
+        console.log("user======",this.user);
+      })
 
      }
-
-     increment() {
-      this.store.dispatch(increment());
-    }
-   
-    decrement() {
-      this.store.dispatch(decrement());
-    }
-   
-    reset() {
-      this.store.dispatch(reset());
-    }
+ 
 
   ngOnInit(): void {
-    console.log(this.user);
-    this.authService.authState.subscribe((user) => {     
-      localStorage.setItem('user',JSON.stringify(user));
-      window.location.reload();
+    console.log(",jhgvvbbbvvvvv ",this.user);
+    this.authService.authState.subscribe((user) => {   
+      
+      
+      if (user) {
+        this.userStore.dispatch(googleLogin({ user:user }));
+      }
+      else {
+        this.userStore.dispatch(googleLogout());
+      }
   
-     
      });
   }
 
@@ -59,9 +57,9 @@ export class HeaderComponent implements OnInit {
 
 
     signOut(): void {
-    this.authService.signOut();
-    localStorage.removeItem('user');
-  window.location.reload();
+      // this.authService.signOut();
+      this.userStore.dispatch(googleLogout());
+   
 
    }
 

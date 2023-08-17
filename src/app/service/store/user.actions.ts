@@ -1,5 +1,6 @@
-import { createAction } from '@ngrx/store';
+import { createAction,props } from '@ngrx/store';
+ 
 
-export const increment = createAction('[Counter Component] Increment');
-export const decrement = createAction('[Counter Component] Decrement');
-export const reset = createAction('[Counter Component] Reset');
+ 
+export const googleLogin = createAction('[User] Google Login', props<{ user: any }>());
+export const googleLogout = createAction('[User] Google Logout');

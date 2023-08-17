@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
  import { ActivatedRoute } from '@angular/router';
  import { CommentService } from 'src/app/service/comment.service';
+import { Store, select } from '@ngrx/store';
+import { AppState } from 'src/app/service/store/app.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-comment-form',
@@ -11,10 +14,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CommentFormComponent implements OnInit {
 @Input("postId") postId: any;
-  userState: any = localStorage.getItem('user');
-  user: any = JSON.parse(this.userState);
+ 
   commentForm: FormGroup
   ratting: any;
+  user: any;
  
  
   stars: any[] = [
@@ -30,12 +33,20 @@ export class CommentFormComponent implements OnInit {
     private commentService: CommentService,
     private toastr: ToastrService,
     private route: ActivatedRoute,
+    private userStore: Store<{ user: { user: any } }>
+
 
   ) {
     this.commentForm = this.formBuilder.group({
       comment: ['', Validators.required],
       ratting: ['', Validators.required],
     });
+
+    this.userStore.select('user').subscribe((data:any)=>{
+      this.user = data.user;
+      console.log("user======",this.user);
+    }
+    )
    }
   ngOnInit(): void {
     console.log(this.ratting);

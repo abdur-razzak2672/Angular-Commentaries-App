@@ -3,6 +3,9 @@ import { CommentService } from 'src/app/service/comment.service';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { forkJoin } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { AppState } from 'src/app/service/store/app.state';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -14,8 +17,7 @@ export class CommentListComponent implements OnInit {
 
   @Input("postId") postId: any;
 
-  userState: any = localStorage.getItem('user');
-  user: any = JSON.parse(this.userState);
+   user: any 
 
   stars: any[] = [
     { filled: false },
@@ -37,10 +39,17 @@ export class CommentListComponent implements OnInit {
     private commentService: CommentService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
+    private userStore: Store<{ user: { user: any } }>
   ) {
     this.replyForm = this.formBuilder.group({
       comment: ['', Validators.required],
     });
+
+    this.userStore.select('user').subscribe((data:any)=>{
+      this.user = data.user;
+      console.log("user======",this.user);
+    }
+    )
   }
 
   ngOnInit(): void {
@@ -54,6 +63,8 @@ export class CommentListComponent implements OnInit {
   }
 
   getAllFeedback(): void {
+
+ 
     forkJoin([
       this.commentService.getCommentist(),
       this.commentService.getReplytist()
@@ -76,7 +87,9 @@ export class CommentListComponent implements OnInit {
   }
 
   getRepliesForComment(commentId: any): any[] {
-    return this.reply.filter((reply) => reply.commentId === commentId);
+    return this.reply.filter((reply) => reply.commentId === commentId,
+     
+    );
   }
 
   getReplyFormGroup(commentId: any): FormGroup {
@@ -155,5 +168,35 @@ export class CommentListComponent implements OnInit {
       // Refresh the comments and replies after a new reply is added
       this.getAllFeedback();
     });
+  }
+
+
+  
+  private getCreatedAtFormatted(createdAt: string | null): string {
+    if (!createdAt) {
+      return '';
+    }
+
+    const createdDate = new Date(createdAt);
+    const now = new Date();
+
+    const timeDifference = Math.floor((now.getTime() - createdDate.getTime()) / 1000); // Time difference in seconds
+
+    const days = Math.floor(timeDifference / (60 * 60 * 24));
+    const hours = Math.floor((timeDifference % (60 * 60 * 24)) / (60 * 60));
+    const minutes = Math.floor((timeDifference % (60 * 60)) / 60);
+
+    let formattedTime = '';
+    if (days > 0) {
+      formattedTime += `${days} day `;
+    }
+    if (hours > 0) {
+      formattedTime += `${hours} hour `;
+    }
+    if (minutes > 0) {
+      formattedTime += `${minutes} min`;
+    }
+
+    return formattedTime.trim();
   }
 }

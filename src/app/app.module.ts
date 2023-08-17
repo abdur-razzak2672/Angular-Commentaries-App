@@ -31,12 +31,18 @@ import {
  import { ToastrModule } from 'ngx-toastr'; // Import the module
  import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  import { provideClientHydration } from '@angular/platform-browser'; 
-
- import { StoreModule } from '@ngrx/store';
- import { counterReducer } from './service/store/user.reducer';
+ import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
+ import { localStorageSync } from 'ngrx-store-localstorage'; 
+ import { userReducer } from './service/store/user.reducer';
+ // Other reducers...
  
+ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+   return localStorageSync({ keys: ['user'], rehydrate: true })(reducer);
+ } 
 import { getDevtoolsModule } from './service/enviroments/devtools';
 
+
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,8 +72,15 @@ import { getDevtoolsModule } from './service/enviroments/devtools';
     ReactiveFormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),// ToastrModule added
-     StoreModule.forRoot({ count: counterReducer }),
-     getDevtoolsModule(),
+    StoreModule.forRoot(
+      {
+        user: userReducer,
+        // Other reducers...
+      },
+      {
+        metaReducers: [localStorageSyncReducer], // Add the meta-reducer here
+      }
+    ),     getDevtoolsModule(),
    ],
   providers: [
     {

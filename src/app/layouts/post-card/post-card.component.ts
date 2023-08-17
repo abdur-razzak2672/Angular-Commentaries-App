@@ -15,7 +15,7 @@ export class PostCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.createdAtFormatted = this.getCreatedAtFormatted(this.post?.createdAt);
-  }
+   }
 
   private getCreatedAtFormatted(createdAt: string | null): string {
     if (!createdAt) {
