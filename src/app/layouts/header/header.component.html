@@ -8,7 +8,7 @@
     <div *ngIf="user"  class="custom-dropdown d-flex ">
       <img [src]="user.photoUrl" alt="Profile Image" class="profile-image rounded-circle">
       <div class="mx-2">
-        <div class="selected-value text-dark">
+        <div class="selected-value text-dark mt-2">
           {{user.name}}
         </div>
        
@@ -19,8 +19,8 @@
         <li class="nav-item mx-2"><a class="nav-link" href="category">Category</a></li>
         <li class="nav-item mx-2"><a class="nav-link" href="about-us">About</a></li>
         <li class="nav-item mx-2"><a class="nav-link" href="contact-us">Contact</a></li>
-        <li class="nav-item mx-2"><a class="nav-link" href="/">Your Profile</a></li>
-        <li (click)="signOut()" class="nav-item mx-2 cursor-pointer"><a class="nav-link" >Sign Out</a></li>
+        <li *ngIf="user"  class="nav-item mx-2"><a class="nav-link" href="/">Your Profile</a></li>
+        <li *ngIf="user"  (click)="signOut()" class="nav-item mx-2 cursor-pointer"><a class="nav-link" >Sign Out</a></li>
         
 
 

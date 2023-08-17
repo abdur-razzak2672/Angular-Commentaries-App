@@ -59,6 +59,7 @@ export class HeaderComponent implements OnInit {
     signOut(): void {
       // this.authService.signOut();
       this.userStore.dispatch(googleLogout());
+      window.location.reload();
    
 
    }
