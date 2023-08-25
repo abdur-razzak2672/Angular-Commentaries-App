@@ -4,6 +4,7 @@ import { Post } from '../../models/interface';
 import { PostCardService } from '../../service/post-card.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { DatePipe } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
  
 @Component({
@@ -12,7 +13,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./single-post.component.css']
 })
 export class SinglePostComponent implements OnInit {
-
+  sanitizedUrl: SafeResourceUrl | undefined; 
   posts:any = JSON.parse(localStorage.getItem('posts') || '[]');
   postData:any;
   id :any;
@@ -22,13 +23,13 @@ export class SinglePostComponent implements OnInit {
     private route:ActivatedRoute,
     private postCardService:PostCardService,
     private spinner: NgxSpinnerService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
     this.getPostDetails();
  
-
   }
 
   getPostDetails(){
@@ -37,6 +38,8 @@ export class SinglePostComponent implements OnInit {
     this.postCardService.PostDetail(this.id).subscribe((data:any)=>{
       this.postData = data;
       this.createdAtFormatted = this.getCreatedAtFormatted(this.postData?.createdAt);
+      this.sanitizedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.postData.image);
+console.log(this.sanitizedUrl);
 
       this.spinner.hide();
     });

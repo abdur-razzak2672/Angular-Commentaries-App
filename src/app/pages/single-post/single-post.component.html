@@ -1,8 +1,14 @@
-<div class="container mb-5">
-    <div class="row">
-        <div class="col-md-9">
-            <div class="card shadow-effect">
-                <img [src]="postData?.imageUrl" class="card-img-top " alt="...">
+<div class="container mt-3 mb-5">
+    <div class="row ">
+        <div class="col-md-9 mt-3">
+            <div class="card shadow-effect  rounded">
+
+
+                <iframe [src]="sanitizedUrl" width="100%" height="480" allow="autoplay"  frameborder="0" allowfullscreen="true"></iframe>
+                <!-- <img [src]="postData?.imageUrl" class="card-img-top " alt="..."> -->
+
+
+
                 <div class="card-body">
                     <small class="bg-light text-danger text-center">
                         Design
@@ -29,8 +35,8 @@
             <app-comment-list [postId]="postData?.id"></app-comment-list>
         </div>
 
-        <div   class="col-md-3"> 
-            <div class="mt-1" *ngFor="let post of posts.slice(0,4)">
+        <div   class="col-md-3  mt-3"> 
+            <div class="" *ngFor="let post of posts.slice(0,4)">
               <app-post-card [post]="post" ></app-post-card>
 
             </div>

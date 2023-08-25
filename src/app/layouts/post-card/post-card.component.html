@@ -1,6 +1,11 @@
   <a href="post/details/{{post?.id}}">
    <div class="card shadow-effect">
-      <img [src]="post?.imageUrl " class="card-img-top" alt="...">
+
+      <!-- <img [src]="post?.imageUrl " class="card-img-top" alt="..."> -->
+      <div class="non-clickable-div">
+         <iframe  [src]="sanitizedUrl" width="100%" height="200px"></iframe>
+      </div>
+
    <div class="card-body">
       <small class="bg-light text-danger text-center">Design</small>
       <small class="bg-light text-success text-center mx-2">Feature</small>
