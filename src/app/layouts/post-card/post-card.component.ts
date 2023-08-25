@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/interface';
 import { DatePipe } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-post-card',
@@ -10,10 +11,16 @@ import { DatePipe } from '@angular/common';
 export class PostCardComponent implements OnInit {
   @Input('post') post: any;
   createdAtFormatted: any;
+  sanitizedUrl: SafeResourceUrl | undefined; 
 
-  constructor(private datePipe: DatePipe) {}
+  constructor(private datePipe: DatePipe,
+    private sanitizer: DomSanitizer
+    
+    ) {}
 
   ngOnInit(): void {
+    this.sanitizedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.post.image);
+
     this.createdAtFormatted = this.getCreatedAtFormatted(this.post?.createdAt);
    }
 

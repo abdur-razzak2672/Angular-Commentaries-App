@@ -6,7 +6,11 @@
     height: 200px;
     object-fit: cover;
 }
-
+.non-clickable-div {
+  pointer-events: none; /* Disable pointer events */
+  opacity: 0.7; /* Adjust the opacity to visually indicate it's not clickable */
+  /* Add any additional styling you want */
+}
 .card-body {
     /* Set the height to accommodate three lines of text */
      overflow: hidden;
